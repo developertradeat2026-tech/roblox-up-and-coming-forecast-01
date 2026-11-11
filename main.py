@@ -13,8 +13,7 @@ The model, per game at rank r and hour h of the scored window:
 Everything is fitted from the history by weighted least squares; the forecast is the hour marginal
 averaged over the window (each hour is scored on its own, so that mean is the proper forecast).
 
-The history's own read spacing sets the clock: when it cannot resolve the hour (reads many hours
-apart) the model's curves are stretched by k so the hourly forecast is not over-diffuse.
+The model's curves are fitted against the actual read spacing in hours. They do not extrapolate observations at one read spacing to another; k=1 leaves the fitted hourly clock unchanged.
 
 Python 3.13, standard library only, no network, no randomness: two runs write the same bytes.
 """
